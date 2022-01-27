@@ -2,6 +2,7 @@ import React from "react";
 import MembersList from "./MembersList";
 import BookList from "./BooksList";
 import "../Style/Home.css";
+import "../Style/List.css";
 
 const Home = () => {
   return (

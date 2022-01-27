@@ -2,8 +2,9 @@ import React from "react";
 
 const BookItem = ({ book }) => {
   return (
-    <div>
-      <h1> {book.title}</h1>
+    <div className="record">
+      <h2>{book.id}</h2>
+      <h2> {book.title}</h2>
     </div>
   );
 };
