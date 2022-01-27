@@ -12,11 +12,16 @@ const AddItem = () => {
 
   const handleData = (event) => {
     setitemData({ ...itemData, [event.target.name]: event.target.value });
-    console.log(itemData);
   };
 
   const handleSubmit = (event) => {
     bookStore.addItem({ ...itemData });
+    alert("Book has been added");
+    setitemData({
+      title: "",
+      author: "",
+      genre: "",
+    });
     event.preventDefault();
   };
 
@@ -30,6 +35,7 @@ const AddItem = () => {
             placeholder="Enter Book Title"
             name="title"
             onChange={handleData}
+            value={itemData.title}
           />
         </Form.Group>
         <Form.Group className="mb-3">

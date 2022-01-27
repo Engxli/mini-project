@@ -4,9 +4,9 @@ import bookStore from "../Stores/bookStore";
 import BookItem from "./BookItem";
 import { observer } from "mobx-react";
 
-const BooksList = () => {
+const BooksList = ({ handleClickBook }) => {
   const books = bookStore.books.map((book) => (
-    <div className="item">
+    <div className="item" onClick={() => handleClickBook(book, "viewBook")}>
       <BookItem book={book} />
     </div>
   ));
@@ -15,7 +15,12 @@ const BooksList = () => {
       <div className="header">
         <h1>Header</h1>
         <div className="control">
-          <Button variant="primary">Add</Button>
+          <Button
+            variant="primary"
+            onClick={() => handleClickBook({}, "addBook")}
+          >
+            Add
+          </Button>
           <Button variant="primary">Info</Button>
           <InputGroup size="sm" className="mb-3">
             <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>
