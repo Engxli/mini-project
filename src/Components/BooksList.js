@@ -2,6 +2,7 @@ import { Button, InputGroup, FormControl } from "react-bootstrap";
 import React from "react";
 import bookStore from "../Stores/bookStore";
 import BookItem from "./BookItem";
+import { observer } from "mobx-react";
 
 const BooksList = () => {
   const books = bookStore.books.map((book) => (
@@ -33,4 +34,4 @@ const BooksList = () => {
   );
 };
 
-export default BooksList;
+export default observer(BooksList);
