@@ -2,9 +2,11 @@ import React from "react";
 
 const MemberItem = ({ member }) => {
   return (
-    <div className="item">
-      <h1>{member.firstName}</h1>
-      <hr />
+    <div className="record">
+      <h2>{member.id}</h2>
+      <h2>
+        {member.firstName} {member.lastName}
+      </h2>
     </div>
   );
 };

@@ -1,0 +1,112 @@
+.list {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.border {
+  border: 2px solid black;
+}
+
+.list-controller {
+  /* border-radius: 20px; */
+  height: 20%;
+  /* background-color: yellow; */
+  border-bottom: 2px solid black;
+}
+
+.list-controller h1 {
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.list-controller-functions {
+  height: auto;
+  /* background-color: black; */
+}
+.list-controller-functions button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  border-radius: 10px;
+  margin-right: 5px;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.list-controller-functions button:hover {
+  background-color: #3f9342; /* Green */
+  cursor: pointer;
+}
+
+.list-controller-functions button:active {
+  background-color: #337835; /* Green */
+  cursor: pointer;
+}
+
+.list-controller-functions input {
+  width: 50%;
+  height: 35px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.list-controller-functions select {
+  width: 20%;
+  height: 35px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.table-head {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-template-areas: "id detail";
+  font-size: 12px;
+  border-bottom: 2px solid black;
+}
+.table-head-id {
+  padding: 10px;
+  grid-area: id;
+}
+.table-head-detail {
+  padding: 10px;
+  grid-area: detail;
+}
+
+.table-items {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-template-areas: "itemsId itemsDetail";
+  font-size: 12px;
+  border-bottom: 1px dashed black;
+}
+
+.table-items:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.table-items-id {
+  padding: 10px;
+  grid-area: itemsId;
+}
+.table-items-detail {
+  padding: 10px;
+  grid-area: itemsDetail;
+}
+
+.overflow-auto {
+  height: 100%;
+  overflow: auto;
+}

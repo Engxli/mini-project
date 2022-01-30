@@ -6,17 +6,30 @@ class BookStore {
     makeAutoObservable(this);
   }
 
-  addItem(newBook) {
+  addItem = (newBook) => {
     newBook.slug = newBook.title.toLowerCase().split(" ").join("-");
     newBook.id = this.books[this.books.length - 1].id + 1;
     newBook.borrowedBy = [];
     newBook.available = true;
     console.log(newBook);
-    console.log("newBook.genre", newBook.genre);
-    newBook.genre = newBook.genre.trim().split(/[ ,]+/);
 
     this.books = [...this.books, newBook];
-  }
+  };
+
+  borrowBook = (bookId, memberId) => {
+    const book = this.books.find((b) => b.id == bookId);
+    book.borrowedBy.push(memberId);
+    book.available = false;
+  };
+
+  returnBook = (bookId) => {
+    const book = this.books.find((b) => b.id == bookId);
+    book.available = true;
+  };
+
+  availableBooks = () => {
+    return this.books.filter((book) => book.available);
+  };
 }
 
 const books = new BookStore();

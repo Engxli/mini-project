@@ -4,16 +4,19 @@ import BookList from "./BooksList";
 import "../Style/Home.css";
 import "../Style/List.css";
 import AddBook from "./AddBook";
+import AddMember from "./AddMember";
 import PlaceHolder from "./PlaceHolder";
 import ViewBook from "./ViewBook";
+import ViewMember from "./ViewMember";
+import BookItem from "./BookItem";
 
 const Home = () => {
   const [show, setShow] = useState("home");
   const [item, setItem] = useState({});
 
-  const handleClickBook = (book, typeOfView) => {
+  const handleClickItem = (item, typeOfView) => {
     setShow(typeOfView);
-    setItem(book);
+    setItem(item);
   };
 
   return (
@@ -21,13 +24,15 @@ const Home = () => {
       <div className="info">
         {show === "home" && <PlaceHolder />}
         {show === "addBook" && <AddBook />}
+        {show === "addMember" && <AddMember />}
         {show === "viewBook" && <ViewBook book={item} />}
+        {show === "viewMember" && <ViewMember member={item} />}
       </div>
       <div className="memebers-list">
-        <MembersList />
+        <MembersList handleClick={handleClickItem} />
       </div>
       <div className="books-list">
-        <BookList handleClickBook={handleClickBook} />
+        <BookList handleClick={handleClickItem} />
       </div>
     </div>
   );
