@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 const BookItem = ({ book }) => {
   return (
@@ -12,4 +13,4 @@ const BookItem = ({ book }) => {
   );
 };
 
-export default BookItem;
+export default observer(BookItem);
