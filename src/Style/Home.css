@@ -5,26 +5,27 @@
   grid-template-columns: 50vw 50vw;
   grid-template-rows: 50vh 50vh;
   grid-template-areas: "info info" "bookslist memberslist";
-  gap: 10px;
 }
 
 .members-list {
   grid-area: memberslist;
   height: 90%;
   overflow: hidden;
+  margin: 10px;
 }
 
 .books-list {
   grid-area: bookslist;
   height: 90%;
   overflow: hidden;
+  margin: 10px;
 }
 
 .info {
   grid-area: info;
-}
-
-hr {
-  margin: 0px;
-  padding: 0px;
+  height: 90%;
+  overflow: hidden;
+  margin: 10px;
+  background-color: white;
+  border-radius: 20px;
 }

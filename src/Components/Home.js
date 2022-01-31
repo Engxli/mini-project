@@ -22,13 +22,15 @@ const Home = () => {
   return (
     <div className="home">
       <div className="info">
-        {show === "home" && <PlaceHolder />}
-        {show === "addBook" && <AddBook />}
-        {show === "addMember" && <AddMember />}
-        {show === "viewBook" && <ViewBook book={item} />}
-        {show === "viewMember" && <ViewMember member={item} />}
+        <div className="info-details">
+          {show === "home" && <PlaceHolder />}
+          {show === "addBook" && <AddBook />}
+          {show === "addMember" && <AddMember />}
+          {show === "viewBook" && <ViewBook book={item} />}
+          {show === "viewMember" && <ViewMember member={item} />}
+        </div>
       </div>
-      <div className="memebers-list">
+      <div className="members-list">
         <MembersList handleClick={handleClickItem} />
       </div>
       <div className="books-list">
