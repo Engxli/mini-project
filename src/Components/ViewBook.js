@@ -6,16 +6,14 @@ import { Form, Button } from "react-bootstrap";
 import { observer } from "mobx-react";
 
 const ViewBook = ({ book }) => {
-  const [memberId, setMemberId] = useState(-1);
   const members = memberStore.members.filter((member) =>
     book.borrowedBy.find((id) => id == member.id)
   );
 
-  const handleBorrow = (event) => {
+  const handleBorrow = (memberId) => {
     if (memberId != -1) {
       memberStore.borrowBook(+memberId, +book.id);
     }
-    setMemberId(-1);
   };
 
   const handleReturn = (event) => {
@@ -23,48 +21,60 @@ const ViewBook = ({ book }) => {
   };
 
   return (
-    <div className="detail">
-      <h1>{book.title}</h1>
-      <h1>{book.author}</h1>
-      <h1>{book.genre.join(", ")}</h1>
+    <div className="details">
+      <h1>Book Details</h1>
 
-      <h1>{book.available ? "Available" : "Not Available"}</h1>
-      {book.available ? (
-        <Button onClick={handleBorrow}>Borrow</Button>
-      ) : (
-        <Button onClick={handleReturn}>Return</Button>
-      )}
+      <div className="super-master">
+        <div className="member-info-master">
+          <div className="member-info">
+            <h3>Title:</h3>
+            <h3>{book.title}</h3>
+          </div>
 
-      <h2>
-        {book.available && (
-          <div>
-            <h1>Who can Borrow</h1>
-            <Form.Group>
-              <Form.Select
-                onChange={(event) => setMemberId(event.target.value)}
-                aria-label="Default select example"
-              >
-                <option value="-1">Select Borrower</option>
+          <div className="member-info">
+            <h3>Author:</h3>
+            <h3>{book.author}</h3>
+          </div>
+
+          <div className="member-info">
+            <h3>Genres:</h3>
+            <h3>{book.genre.join(", ")}</h3>
+          </div>
+
+          <div className="member-info">
+            <h3>{book.available ? "Available" : "Not Available"}</h3>
+            {!book.available && <Button onClick={handleReturn}>Return</Button>}
+          </div>
+
+          {/* <h1>History of Borrowers</h1>
+          <h2>
+            {members.map((member) => (
+              <div>
+                {member.firstName} {member.lastName}
+              </div>
+            ))}
+          </h2> */}
+        </div>
+
+        <div className="member-info-master-2">
+          <h2>
+            {book.available && (
+              <div>
+                <h2>Who can Borrow</h2>
 
                 {memberStore.getMembersAllowed().map((member) => (
-                  <option value={member.id}>
+                  <div className="borrowed-record">
                     {member.firstName} {member.lastName}
-                  </option>
+                    <Button onClick={() => handleBorrow(member.id)}>
+                      borrow
+                    </Button>
+                  </div>
                 ))}
-              </Form.Select>
-            </Form.Group>
-          </div>
-        )}
-      </h2>
-
-      <h1>History of Borrowers</h1>
-      <h2>
-        {members.map((member) => (
-          <div>
-            {member.firstName} {member.lastName}
-          </div>
-        ))}
-      </h2>
+              </div>
+            )}
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };
