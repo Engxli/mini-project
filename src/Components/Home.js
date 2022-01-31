@@ -9,6 +9,7 @@ import PlaceHolder from "./PlaceHolder";
 import ViewBook from "./ViewBook";
 import ViewMember from "./ViewMember";
 import BookItem from "./BookItem";
+import "../Style/view.css";
 
 const Home = () => {
   const [show, setShow] = useState("home");

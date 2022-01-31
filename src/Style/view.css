@@ -1,0 +1,57 @@
+.details {
+  border: 2px solid rgb(128, 123, 123);
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  width: 50vw;
+  height: 90%;
+  overflow: hidden;
+}
+
+.super-master {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 80%;
+}
+
+.details h1 {
+  border-bottom: 2px solid black;
+}
+
+.details button {
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+  padding: 0;
+}
+
+.borrowed-record {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  text-align: left;
+}
+
+.member-info {
+  margin: auto;
+  display: flex;
+
+  text-align: left;
+  gap: 20px;
+}
+
+.borrowed-record button {
+  margin-top: 8px;
+}
+
+.member-info-master {
+  border-right: 2px solid black;
+  padding: 20px;
+}
+.member-info-master-2 {
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}

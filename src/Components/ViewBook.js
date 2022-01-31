@@ -23,7 +23,7 @@ const ViewBook = ({ book }) => {
   };
 
   return (
-    <div>
+    <div className="detail">
       <h1>{book.title}</h1>
       <h1>{book.author}</h1>
       <h1>{book.genre.join(", ")}</h1>
