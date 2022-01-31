@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import bookStore from "../Stores/bookStore";
+import "../Style/Add.css";
 
 //Book
 const AddBook = () => {
@@ -50,10 +51,12 @@ const AddBook = () => {
   };
 
   return (
-    <div>
+    <div className="add-item">
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Book Title</Form.Label>
+          <Form.Label>
+            <h2>Book Title</h2>
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Book Title"
@@ -63,11 +66,14 @@ const AddBook = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Book Author</Form.Label>
+          <Form.Label>
+            <h2>Book Author</h2>
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Book Author"
             name="author"
+            value={itemData.author}
             onChange={handleData}
           />
         </Form.Group>
@@ -76,6 +82,7 @@ const AddBook = () => {
           <Form.Select
             onChange={handleGenreData}
             aria-label="Default select example"
+            value={itemData.genre}
           >
             <option value="">select genre</option>
             {genres.map((genre) => (
@@ -83,13 +90,22 @@ const AddBook = () => {
             ))}
           </Form.Select>
           {genreData.map((genre) => (
-            <Button onClick={() => handleGenreDelete(genre)}>{genre}</Button>
+            <Button
+              className="genre-button"
+              onClick={() => handleGenreDelete(genre)}
+            >
+              {genre}
+            </Button>
           ))}
           <br />
-          <Button variant="primary" onClick={handleSubmit}>
-            Submit
-          </Button>
         </Form.Group>
+        <Button
+          className="submit-button"
+          variant="primary"
+          onClick={handleSubmit}
+        >
+          Add
+        </Button>
       </Form>
     </div>
   );

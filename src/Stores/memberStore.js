@@ -49,6 +49,24 @@ class MemberStore {
     );
     bookStore.returnBook(bookId);
   };
+
+  getMember = (memberId) => {
+    return this.members.find((m) => m.id == memberId);
+  };
+
+  getStats = () => {
+    const membersStat = {
+      totalMember: this.members.length,
+      platinum: this.members.filter(
+        (member) => member.membership === "platinum"
+      ).length,
+      gold: this.members.filter((member) => member.membership === "gold")
+        .length,
+      silver: this.members.filter((member) => member.membership === "silver")
+        .length,
+    };
+    return membersStat;
+  };
 }
 
 const members = new MemberStore();

@@ -1,0 +1,29 @@
+.add-item {
+  border: 2px solid rgb(128, 123, 123);
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  width: 30vw;
+  height: 90%;
+  overflow: hidden;
+  position: relative;
+}
+
+.add-item input {
+  width: 80%;
+  margin: auto;
+}
+
+.add-item select {
+  width: 80%;
+  margin: auto;
+}
+.submit-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.genre-button {
+  margin: 5px;
+}

@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import books from "../Data/books";
 import memberStore from "../Stores/memberStore";
 import bookStore from "../Stores/bookStore";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
 import { observer } from "mobx-react";
 
 const ViewBook = ({ book }) => {
+  const [query, setQuery] = useState("");
+
+  const handleQuery = (event) => {
+    setQuery(event.target.value);
+  };
+
   const members = memberStore.members.filter((member) =>
     book.borrowedBy.find((id) => id == member.id)
   );
@@ -58,18 +64,43 @@ const ViewBook = ({ book }) => {
 
         <div className="member-info-master-2">
           <h2>
-            {book.available && (
+            {book.available ? (
               <div>
                 <h2>Who can Borrow</h2>
+                <InputGroup onChange={handleQuery} size="sm" className="mb-3">
+                  <InputGroup.Text id="inputGroup-sizing-sm">
+                    Search
+                  </InputGroup.Text>
+                  <FormControl
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </InputGroup>
 
-                {memberStore.getMembersAllowed().map((member) => (
-                  <div className="borrowed-record">
-                    {member.firstName} {member.lastName}
-                    <Button onClick={() => handleBorrow(member.id)}>
-                      borrow
-                    </Button>
-                  </div>
-                ))}
+                {memberStore
+                  .getMembersAllowed()
+                  .filter((member) =>
+                    (member.firstName + " " + member.lastName)
+                      .toLowerCase()
+                      .includes(query.toLowerCase())
+                  )
+                  .map((member) => (
+                    <div className="borrowed-record">
+                      <p>
+                        {member.firstName} {member.lastName}
+                      </p>
+                      <Button onClick={() => handleBorrow(member.id)}>
+                        borrow
+                      </Button>
+                    </div>
+                  ))}
+              </div>
+            ) : (
+              <div>
+                book is borrowed by{" "}
+                {bookStore.bookHeldBy(book.id).firstName +
+                  " " +
+                  bookStore.bookHeldBy(book.id).lastName}
               </div>
             )}
           </h2>

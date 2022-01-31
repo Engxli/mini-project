@@ -75,7 +75,7 @@ const ViewMember = ({ member }) => {
               )
               .map((book) => (
                 <div className="borrowed-record">
-                  {book.title}{" "}
+                  <p>{book.title} </p>
                   <Button onClick={() => handleBorrow(book.id)}>borrow</Button>
                 </div>
               ))}{" "}

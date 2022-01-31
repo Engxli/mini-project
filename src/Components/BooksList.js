@@ -27,12 +27,14 @@ const BooksList = ({ handleClick }) => {
   return (
     <div className="frame">
       <div className="header">
-        <h1>Header</h1>
+        <h1>Books List</h1>
         <div className="control">
           <Button variant="primary" onClick={() => handleClick({}, "addBook")}>
             Add
           </Button>
-          <Button variant="primary">Info</Button>
+          <Button onClick={() => handleClick({}, "home")} variant="primary">
+            Info
+          </Button>
           <InputGroup onChange={handleQuery} size="sm" className="mb-3">
             <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>
             <FormControl

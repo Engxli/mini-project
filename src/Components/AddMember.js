@@ -26,21 +26,26 @@ const AddMember = () => {
   };
 
   return (
-    <div>
+    <div className="add-item">
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Member First Name</Form.Label>
+          <Form.Label>
+            <h2>Member First Name</h2>
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter First Name"
             name="firstName"
             onChange={handleData}
-            value={itemData.title}
+            value={itemData.firstName}
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Member Last Name</Form.Label>
+          <Form.Label>
+            <h2>Member Last Name</h2>
+          </Form.Label>
           <Form.Control
+            value={itemData.lastName}
             type="text"
             placeholder="Enter Last Name"
             name="lastName"
@@ -49,8 +54,8 @@ const AddMember = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Select Membership</Form.Label>
           <Form.Select
+            value={itemData.membership}
             onChange={handleData}
             aria-label="Default select example"
             name="membership"
@@ -61,8 +66,12 @@ const AddMember = () => {
             <option value="gold">Gold</option>
             <option value="platinum">Platinum</option>
           </Form.Select>
-          <Button variant="primary" onClick={handleSubmit}>
-            Submit
+          <Button
+            className="submit-button"
+            variant="primary"
+            onClick={handleSubmit}
+          >
+            Add
           </Button>
         </Form.Group>
       </Form>
